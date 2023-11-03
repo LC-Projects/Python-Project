@@ -5,15 +5,15 @@ from datetime import date
 
 
 # 1️⃣ Récupérer les données relatives à la diffusion d’épisodes pour le mois en cours disponibles sur cette page :  
-def get_series():
-    url = "https://www.spin-off.fr/calendrier_des_series.html"
+def get_series(year_month = ""):
+    url = f"https://www.spin-off.fr/calendrier_des_series.html?date={year_month}"
 
     # Request Content
     response = requests.get(url)
     content = response.content
 
     # Parse HTML
-    page = BeautifulSoup(content, 'html')
+    page = BeautifulSoup(content, features="html.parser")
 
 
     list_of_series = [serie_name for serie_name in page.find_all('span',class_=['calendrier_episodes'])]
@@ -171,4 +171,70 @@ def episodes_to_database():
     for row in resultats:
         print(row)
 
-episodes_to_database()
+# episodes_to_database()
+
+
+
+
+
+# Refacto Functions
+def count(property_name, reverse = True):
+    counts = {}
+    for element in property_name:
+        if element in counts:
+            counts[element] += 1
+        else:
+            counts[element] = 1
+    return dict(sorted(counts.items(), key=lambda item: item[1], reverse=reverse))
+
+
+
+
+# Algorithmie [1/2]
+# 3️⃣ Calculer le nombre d’épisodes diffusés par chaque chaîne de télévision (présente dans les données) en Octobre.
+# property_name → "nom_serie", "numero_de_lepisode", "numero_de_la_saison", "date_de_diffusion_de_lepisode", "pays_d_origine", "chaine_de_diffusion", "url_relative_de_lepisode"
+def count_episodes_by_property(year_month, property_name):
+    properties = get_series(year_month)[property_name]
+    return count(properties)
+
+# print(count_episodes_by_property("2023-10", "chaine_de_diffusion"))
+
+
+
+
+# Vous pouvez faire directement des requêtes SQL, ou rapatrier les données depuis une table (ou un fichier dans lequel vous les auriez stocker) et faire les calculs avec Python. 
+# Indiquer dans le fichier README.md le nom des trois chaînes qui ont diffusé le plus d’épisodes. 
+
+
+
+
+# 3️⃣ Faire de même pour les pays (pensez à mutualiser votre code !)
+# print(count_episodes_by_property("2023-10", "pays_d_origine"))
+
+
+
+
+# 3️⃣ Quels mots reviennent le plus souvent dans les noms des séries ? (attention à ne compter qu’une seule fois chaque série, et pas une fois chaque épisode)
+# Les indiquer dans le fichier README.md
+def most_used_word_in_show_title():
+    shows_title = [key for key in count_episodes_by_property("2023-10", "nom_serie")]
+    words = []
+    for show_title in shows_title:
+        for word in show_title.split(" "):
+            words.append(word.upper())
+    
+    # return (next(iter(count(words))))
+    return count(words)
+
+# print(most_used_word_in_show_title())
+
+
+
+
+
+
+
+
+
+# Somme des jours cumulé
+# 5 programmes télévisé d'une chaine de TV par semaine
