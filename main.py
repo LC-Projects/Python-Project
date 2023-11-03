@@ -1,4 +1,5 @@
 import requests
+import sqlite3
 from bs4 import BeautifulSoup
 from datetime import date
 
@@ -86,7 +87,7 @@ def create_episode_csv(data):
 
 
 # 3️⃣ Écrire une fonction ou une classe qui permet de lire le fichier episodes.csv sans utiliser de librairie. Cette fonction ou classe devra renvoyer une liste de tuples avec les bons types : 
-def read_episode_csv():       
+def read_episodes_csv():       
     with open('data/files/episodes.csv', 'r') as file:
         content = file.read()
         typed_content = []
@@ -118,4 +119,56 @@ def read_episode_csv():
             typed_content.append(tuple(serie_row for serie_row in serie_elements))
         return typed_content
             
-# print(read_episode_csv())
+# print(read_episodes_csv())
+
+
+
+
+# SQL [1/2]
+# 2️⃣ Insérer les données de la question Scraping [1/2] dans base de données sqlite appelée database.db dans le dossier data/databases. La table devra s’appeler episode .
+# Veillez à utiliser les types adéquats (la date peut toutefois être stockée en tant que chaîne de caractères avec un typeTEXT).
+def episodes_to_database():
+    # Connexion à la base de données (si elle n'existe pas, elle sera créée)
+    conn = sqlite3.connect('data/databases/database.db')
+
+    # Création d'un curseur pour exécuter des commandes SQL
+    cur = conn.cursor()
+
+    # Définition du schéma de la table
+    cur.execute('''
+        CREATE TABLE IF NOT EXISTS episode (
+            id INTEGER PRIMARY KEY,
+            nom_serie TEXT,
+            numero_episode INTEGER,
+            numero_saison INTEGER,
+            date_diffusion DATE,
+            pays_origine TEXT,
+            chaine_diffusion TEXT,
+            url_episode TEXT
+        )
+    ''')
+    conn.commit()
+
+
+    # Insérer les données
+    cur.executemany("""INSERT INTO episode 
+                    (
+                        nom_serie,
+                        numero_episode,
+                        numero_saison,
+                        date_diffusion,
+                        pays_origine,
+                        chaine_diffusion,
+                        url_episode
+                    ) VALUES (?,?,?,?,?,?,?)""",
+                    read_episodes_csv())
+    conn.commit()
+
+
+    # Décommenter ci-dessous pour tester la lecture
+    cur.execute("SELECT * FROM episode")
+    resultats = cur.fetchall()
+    for row in resultats:
+        print(row)
+
+episodes_to_database()
