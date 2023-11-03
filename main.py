@@ -256,14 +256,59 @@ def get_episodes_duration():
         page = BeautifulSoup(content, features="html.parser")
         duration = page.find('div', class_='episode_infos_episode_format').text.replace("minutes", "").strip()
         
+        if duration != "":
+            durations.append([serie[0], int(duration)])
+        else:
+            durations.append([serie[0], 0])
+            
         
-        durations.append([serie[0], duration])
+        
         time.sleep(1)
 
     return durations
         
-print(get_episodes_duration())
+# print(get_episodes_duration())
 
+
+
+# SQL [2/2]
+# 4️⃣ Stocker les données de durée d’épisode (en minutes) dans une nouvelles table duration qui contiendra une Foreign Key pointant sur l’épisode en question dans la table episode 
+def save_duration_to_database():
+    # Connexion à la base de données (si elle n'existe pas, elle sera créée)
+    conn = sqlite3.connect('data/databases/database.db')
+
+    # Création d'un curseur pour exécuter des commandes SQL
+    cur = conn.cursor()
+
+    # Définition du schéma de la table
+    cur.execute('''
+        CREATE TABLE IF NOT EXISTS duration (
+            id   INTEGER PRIMARY KEY,
+            duration INTEGER,
+            duration_id INTEGER,
+            FOREIGN KEY (duration_id)
+                REFERENCES episode (id) 
+        )
+    ''')
+    conn.commit()
+
+
+    # Insérer les données
+    cur.executemany("""INSERT INTO duration 
+                    (
+                        duration_id,
+                        duration
+                    ) VALUES (?,?)""",
+                    get_episodes_duration())
+    conn.commit()
+    
+save_duration_to_database()
+
+
+
+
+# Algorithmie [2/2]
+# 5️⃣ Quelle est la chaîne de TV qui diffuse des épisodes pendant le plus grand nombre de jours consécutifs sur le mois d’Octobre ? (écrire une fonction qui permet de répondre à cet question)
 
 # Somme des jours cumulé
 # 5 programmes télévisé d'une chaine de TV par semaine
