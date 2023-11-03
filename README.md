@@ -11,7 +11,7 @@
     }
 ```
 
-### Ci-dessous, le nombre d'épisode diffusées par les pays 
+### Le nombre d'épisode diffusées par pays 
 ```PY
     {
         'Allemagne': 35,

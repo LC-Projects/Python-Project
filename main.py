@@ -1,5 +1,6 @@
 import requests
 import sqlite3
+import time
 from bs4 import BeautifulSoup
 from datetime import date
 
@@ -232,8 +233,36 @@ def most_used_word_in_show_title():
 
 
 
+# Scraping [2/2] 
+# 4️⃣ Sur les pages individuelles des épisodes (dont l’url à été récupérée lors de la première question), récupérer la durée de l’épisode. Les requêtes peuvent être un peu longue donc vous pouvez ne le faire que pour une seule chaîne comme Apple TV. Veiller à ne pas perdre les données pour pouvoir les insérer dans SQL. Pensez à utiliser un time.sleep entre les requêtes.
+def get_episodes_duration():
+    # Connexion à la base de données (si elle n'existe pas, elle sera créée)
+    conn = sqlite3.connect('data/databases/database.db')
 
+    # Création d'un curseur pour exécuter des commandes SQL
+    cur = conn.cursor()
+    cur.execute("SELECT * FROM episode WHERE chaine_diffusion LIKE 'Apple TV+'")
+    series = cur.fetchall()
 
+    durations = []
+    for serie in series:    
+        url = f"https://www.spin-off.fr/{serie[7]}"
+
+        # Request Content
+        response = requests.get(url)
+        content = response.content
+
+        # Parse HTML
+        page = BeautifulSoup(content, features="html.parser")
+        duration = page.find('div', class_='episode_infos_episode_format').text.replace("minutes", "").strip()
+        
+        
+        durations.append([serie[0], duration])
+        time.sleep(1)
+
+    return durations
+        
+print(get_episodes_duration())
 
 
 # Somme des jours cumulé
