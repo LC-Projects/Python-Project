@@ -1,6 +1,8 @@
 import argparse
 import datetime
-from main import *
+from utils import *
+from scraping_1 import *
+from algorithmie_2 import *
 
 argParser = argparse.ArgumentParser()
 argParser.add_argument("-m", "--month", help="Month (1-12)")

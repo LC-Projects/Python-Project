@@ -37,5 +37,5 @@ def most_diffused_channel(year_month):
     # print(dict(sorted(counter_tmp.items(), key=lambda item: item[1], reverse=True)))
     return dict(sorted(counter_final.items(), key=lambda item: item[1], reverse=True))
 
-print(most_diffused_channel("2023-11"))
+# print(most_diffused_channel("2023-11"))
 # *************************************************
