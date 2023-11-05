@@ -13,7 +13,7 @@ Réponse : Car cela permet d'avoir la bonne version de la librairie qui tourne d
 
 # Questions traitées 
 ## Scraping  [1/2]
-[x] Le nom de la série
+[X] Le nom de la série
 [x] Le numéro de l’épisode
 [x] Le numéro de la saison
 [x] La date de diffusion de l’épisode
