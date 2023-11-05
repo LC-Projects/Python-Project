@@ -14,26 +14,26 @@ Réponse : Car cela permet d'avoir la bonne version de la librairie qui tourne d
 # Questions traitées 
 ## Scraping  [1/2]
 
-[X] Le nom de la série
-[X] Le numéro de l’épisode
-[X] Le numéro de la saison
-[X] La date de diffusion de l’épisode
-[X] Le pays d’origine
-[X] La chaîne qui diffuse la série
-[X] L’url relative de la page de l’épisode sur le site spin-off 
+- [x]  Le nom de la série
+- [x]  Le numéro de l’épisode
+- [x]  Le numéro de la saison
+- [x]  La date de diffusion de l’épisode
+- [x]  Le pays d’origine
+- [x]  La chaîne qui diffuse la série
+- [x]  L’url relative de la page de l’épisode sur le site spin-off 
 
 ## Fichiers
-[X] Enregistrez ces données dans un fichier episodes.csv
-[X] Écrire une fonction ou une classe qui permet de lire le fichier episodes.csv sans utiliser de librairie
+- [x]  Enregistrez ces données dans un fichier episodes.csv
+- [x]  Écrire une fonction ou une classe qui permet de lire le fichier episodes.csv sans utiliser de librairie
 
 ## SQL [1/2]
-[X] Insérer les données de la question Scraping [1/2] dans base de données sqllite appelé database.db 
+- [x]  Insérer les données de la question Scraping [1/2] dans base de données sqllite appelé database.db 
 
 ## Algorithmie [1/2]
-[X] Calculer le nombre d’épisodes diffusés par chaque chaîne de télévision (présente dans les données) en Octobre.
-[X] Indiquer dans le fichier README.md le nom des trois chaînes qui ont diffusé le plus d’épisodes. (voir ci-dessous)
-[X] Indiquer dans le fichier README.md le nom des trois pays qui ont diffusé le plus d’épisodes. (voir ci-dessous)
-[X] Indiquer dans le fichier README.md les mots qui reviennent le plus souvent dans les noms des séries. (voir ci-dessous)
+- [x]  Calculer le nombre d’épisodes diffusés par chaque chaîne de télévision (présente dans les données) en Octobre.
+- [x]  Indiquer dans le fichier README.md le nom des trois chaînes qui ont diffusé le plus d’épisodes. (voir ci-dessous)
+- [x]  Indiquer dans le fichier README.md le nom des trois pays qui ont diffusé le plus d’épisodes. (voir ci-dessous)
+- [x]  Indiquer dans le fichier README.md les mots qui reviennent le plus souvent dans les noms des séries. (voir ci-dessous)
 
 ### Les trois chaînes qui ont diffusée le plus d'épisodes
 ```PY
@@ -78,13 +78,13 @@ Réponse : Car cela permet d'avoir la bonne version de la librairie qui tourne d
 ```
 
 ## Scraping [2/2] 
-[X] Récupérer la durée de l’épisode pour la chaîne Apple TV
+- [x]  Récupérer la durée de l’épisode pour la chaîne Apple TV
 
 ## SQL [2/2]
-[X] Stocker les données de durée d’épisode (en minutes) dans une nouvelles table duration qui contiendra une Foreign Key pointant sur l’épisode en question dans la table episode
+- [x]  Stocker les données de durée d’épisode (en minutes) dans une nouvelles table duration qui contiendra une Foreign Key pointant sur l’épisode en question dans la table episode
 
 ## Algorithmie [2/2]
-[X] Indiquer quelle est la/les chaîne(s) de TV qui diffuse(nt) des épisodes pendant le plus grand nombre de jours consécutifs sur le mois d’Octobre.
+- [x]  Indiquer quelle est la/les chaîne(s) de TV qui diffuse(nt) des épisodes pendant le plus grand nombre de jours consécutifs sur le mois d’Octobre.
 
 ### Les chaînes qui diffusent des épisodes pendant le plus grand nombre de jours consécutifs sur le mois d'octobre
 TF1 et France 2 (ex aequo) sont les chaînes TV qui diffusent des épisodes pendant le plus grand nombre de jours consécutifs sur le mois d'octobre.
@@ -101,7 +101,14 @@ TF1 et France 2 (ex aequo) sont les chaînes TV qui diffusent des épisodes pend
 ```
 ## Orchestration
 Créer une commande qui permet d’afficher dans la console les résultats suivants dans le mois de notre choix :
-[X] [NOMBRE] episodes seront diffusés pendant le mois de [MOIS].
-[X] C'est [PAYS] qui diffusera le plus d'épisodes avec [NOMBRE] épisodes.
-[X] C'est [CHAINE] qui diffusera le plus d'episodes avec [NOMBRE] épisodes.
-[X] C'est [CHAINE] qui diffusera des épisodes pendant le plus grand nombre de jours consécutifs avec [NOMBRE] de jours consécutifs.
+<<<<<<< HEAD
+- [x]  [NOMBRE] episodes seront diffusés pendant le mois de [MOIS].
+- [x]  C'est [PAYS] qui diffusera le plus d'épisodes avec [NOMBRE] épisodes.
+- [x]  C'est [CHAINE] qui diffusera le plus d'episodes avec [NOMBRE] épisodes.
+- [x]  C'est [CHAINE] qui diffusera des épisodes pendant le plus grand nombre de jours consécutifs avec [NOMBRE] de jours consécutifs.
+=======
+- [x]  [NOMBRE] episodes seront diffusés pendant le mois de [MOIS].
+- [x]  C'est [PAYS] qui diffusera le plus d'épisodes avec [NOMBRE] épisodes.
+- [x]  C'est [CHAINE] qui diffusera le plus d'episodes avec [NOMBRE] épisodes.
+- [x]  C'est [CHAINE] qui diffusera des épisodes pendant le plus grand nombre de jours consécutifs avec [NOMBRE] de jours consécutifs.
+>>>>>>> c0fdd93d1100fe464adf882cf03a69f15a9faf9d
