@@ -1,6 +1,6 @@
-# Algorithmie [1/2]
+# Toutes les réponses sont basées sur le mois d'octobre
 
-## Durant le mois d'octobre
+## Algorithmie [1/2]
 
 ### Les trois chaînes qui ont diffusée le plus d'épisodes
 ```PY
@@ -40,6 +40,24 @@
         'LES': 3, 
         'AMERICAN': 3, 
         'EVERYTHING': 2,
+        # ...
+    }
+```
+
+
+## Algorithmie [2/2]
+
+### 5️⃣ Quelle est la chaîne de TV qui diffuse des épisodes pendant le plus grand nombre de jours consécutifs sur le mois d’Octobre ?
+
+TF1 et France 2 (ex aequo) sont les chaînes TV qui diffusent des épisodes pendant le plus grand nombre de jours consécutifs sur le mois d'octobre.
+
+```PY
+    {
+        'TF1': 5, 
+        'France 2': 5, 
+        'TVE': 4, 
+        'ZDF': 4, 
+        'Netflix': 3,
         # ...
     }
 ```
