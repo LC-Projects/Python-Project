@@ -3,7 +3,6 @@ import sqlite3
 import time
 from bs4 import BeautifulSoup
 from datetime import date
-import sys
 
 
 # *************************************************
@@ -256,6 +255,7 @@ def get_episodes_duration():
 
     # Création d'un curseur pour exécuter des commandes SQL
     cur = conn.cursor()
+    
     cur.execute("SELECT * FROM episode WHERE chaine_diffusion LIKE 'Apple TV+'")
     series = cur.fetchall()
 
@@ -281,7 +281,7 @@ def get_episodes_duration():
 # *************************************************
 # SQL [2/2]
 # 4️⃣ Stocker les données de durée d’épisode (en minutes) dans une nouvelles table duration qui contiendra une Foreign Key pointant sur l’épisode en question dans la table episode 
-def save_duration_to_database():
+def save_duration_to_database(data):
     # Connexion à la base de données (si elle n'existe pas, elle sera créée)
     conn = sqlite3.connect('data/databases/database.db')
 
@@ -307,10 +307,10 @@ def save_duration_to_database():
                         duration_id,
                         duration
                     ) VALUES (?,?)""",
-                    get_episodes_duration())
+                    data)
     conn.commit()
     
-# save_duration_to_database()
+# save_duration_to_database(get_episodes_duration())
 # *************************************************
 
 
