@@ -38,41 +38,37 @@ Réponse : Car cela permet d'avoir la bonne version de la librairie qui tourne d
 ### Les trois chaînes qui ont diffusée le plus d'épisodes
 ```PY
     {
-        'Netflix': 126,
-        'TF1': 43,
-        'Disney+': 34
+        'Netflix': 75, 
+        'Disney+': 33, 
+        'Hulu': 24
     }
 ```
 
 ### Le nombre d'épisode diffusées par pays 
 ```PY
     {
-        'Allemagne': 35,
-        'Australie': 11,
-        'Belgique': 4,
-        'Canada': 81,
-        'Corée du Sud': 6,
-        'Danemark': 3,
-        'Espagne': 31,
-        'Etats-Unis': 404,
-        'Europe': 2,
-        'France': 119,
-        'Italie': 4,
-        'Royaume-Uni': 40,
-        'Suède': 18
+        'Etats-Unis': 404, 
+        'France': 119, 
+        'Canada': 82, 
+        'Royaume-Uni': 40, 
+        'Allemagne': 35, 
+        'Espagne': 31, 
+        'Suède': 18, 
+        'Australie': 11, 
+        'Corée du Sud': 6, 
+        'Italie': 4, 
+        'Belgique': 4, 
+        'Danemark': 3, 
+        'Europe': 2
     }
 ```
 
 ### Les mots les plus utilisés dans les titres des séries
 ```PY
     {
-        'THE': 23,
-        'OF': 7,
-        'DE': 3,
-        '(2023)': 3,
-        'LES': 3, 
-        'AMERICAN': 3, 
-        'EVERYTHING': 2,
+        'THE': 21, 
+        'OF': 4, 
+        'DE': 4,
         # ...
     }
 ```
@@ -84,18 +80,17 @@ Réponse : Car cela permet d'avoir la bonne version de la librairie qui tourne d
 - [x] Stocker les données de durée d’épisode (en minutes) dans une nouvelles table duration qui contiendra une Foreign Key pointant sur l’épisode en question dans la table episode
 
 ## Algorithmie [2/2]
-- [x] Indiquer quelle est la/les chaîne(s) de TV qui diffuse(nt) des épisodes pendant le plus grand nombre de jours consécutifs sur le mois d’Octobre.
+- [x] Indiquer quelle est la chaîne de TV qui diffuse des épisodes pendant le plus grand nombre de jours consécutifs sur le mois de novembre.
 
-### Les chaînes qui diffusent des épisodes pendant le plus grand nombre de jours consécutifs sur le mois d'octobre
-TF1 et France 2 (ex aequo) sont les chaînes TV qui diffusent des épisodes pendant le plus grand nombre de jours consécutifs sur le mois d'octobre.
+### Les chaînes qui diffusent des épisodes pendant le plus grand nombre de jours consécutifs sur le mois de novembre
+Neflix est la chaîne TV qui diffuse des épisodes pendant le plus grand nombre de jours consécutifs sur le mois de novembre.
 
 ```PY
     {
-        'TF1': 5, 
-        'France 2': 5, 
-        'TVE': 4, 
-        'ZDF': 4, 
-        'Netflix': 3,
+        'Netflix': 4, 
+        'Hulu': 3, 
+        'TF1': 3, 
+        'Disney+': 3,
         # ...
     }
 ```

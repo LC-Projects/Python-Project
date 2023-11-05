@@ -1,35 +1,8 @@
-import requests
-from bs4 import BeautifulSoup
-
-# Fonctions complémentaires pour apportées des données à insérer dans le fichier csv : 
-# ------------------------------------------------
-def count(property_name, reverse = True, sort = True):
-    counts = {}
-    for element in property_name:
-        if element in counts:
-            counts[element] += 1
-        else:
-            counts[element] = 1
-    if sort == True:
-        return dict(sorted(counts.items(), key=lambda item: item[1], reverse=reverse))
-    else:
-        return counts
-    
-def get_page_content(year_month = "", end_point = "", ):
-    url = f"https://www.spin-off.fr/{end_point}?date={year_month}" if year_month else f"https://www.spin-off.fr/{end_point}"
-
-    # Request Content
-    response = requests.get(url)
-    content = response.content
-
-    # Parse HTML
-    return BeautifulSoup(content, features="html.parser")
-# ------------------------------------------------
-
+from utils import *
 
 # # *************************************************
 # Algorithmie [2/2]
-# 5️⃣ Quelle est la chaîne de TV qui diffuse des épisodes pendant le plus grand nombre de jours consécutifs sur le mois d’Octobre ? (écrire une fonction qui permet de répondre à cet question)
+# 5️⃣ Quelle est la chaîne de TV qui diffuse des épisodes pendant le plus grand nombre de jours consécutifs sur le mois de novembre ? (écrire une fonction qui permet de répondre à cet question)
 def most_diffused_channel(year_month):
     page = get_page_content(year_month, "calendrier_des_series.html")
 
@@ -64,5 +37,5 @@ def most_diffused_channel(year_month):
     # print(dict(sorted(counter_tmp.items(), key=lambda item: item[1], reverse=True)))
     return dict(sorted(counter_final.items(), key=lambda item: item[1], reverse=True))
 
-print(most_diffused_channel("2023-10"))
+print(most_diffused_channel("2023-11"))
 # *************************************************

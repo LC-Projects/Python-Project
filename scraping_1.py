@@ -1,16 +1,4 @@
-
-import requests
-from bs4 import BeautifulSoup
-
-def get_page_content(year_month = "", end_point = "", ):
-    url = f"https://www.spin-off.fr/{end_point}?date={year_month}" if year_month else f"https://www.spin-off.fr/{end_point}"
-
-    # Request Content
-    response = requests.get(url)
-    content = response.content
-
-    # Parse HTML
-    return BeautifulSoup(content, features="html.parser")
+from utils import *
 
 # *************************************************
 # 1️⃣ Récupérer les données relatives à la diffusion d’épisodes pour le mois en cours disponibles sur cette page :  
@@ -52,5 +40,5 @@ def get_series(year_month = ""):
         "url_relative_de_lepisode": list_of_series_url
     }
     
-print(get_series("2023-11"))
+# print(get_series("2023-11"))
 # *************************************************

@@ -1,10 +1,9 @@
-import sqlite3
+from utils import *
 import time
 
 # Fonctions complémentaires pour apportées des données à insérer dans le fichier csv : 
-# ------------------------------------------------
+# *************************************************
 def get_episodes_duration():
-    # Connexion à la base de données (si elle n'existe pas, elle sera créée)
     conn = sqlite3.connect('data/databases/database.db')
 
     # Création d'un curseur pour exécuter des commandes SQL
@@ -25,14 +24,14 @@ def get_episodes_duration():
         time.sleep(1)
 
     return durations
-# ------------------------------------------------
+# *************************************************
+
 
 
 # *************************************************
 # SQL [2/2]
 # 4️⃣ Stocker les données de durée d’épisode (en minutes) dans une nouvelles table duration qui contiendra une Foreign Key pointant sur l’épisode en question dans la table episode 
 def save_duration_to_database(data):
-    # Connexion à la base de données (si elle n'existe pas, elle sera créée)
     conn = sqlite3.connect('data/databases/database.db')
 
     # Création d'un curseur pour exécuter des commandes SQL
